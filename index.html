@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍길동 | 포트폴리오 & 이력서</title>
+    <title>프로필 포트폴리오</title>
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-hover: #1d4ed8;
-            --text-dark: #1f2937;
-            --text-muted: #4b5563;
-            --bg-light: #f8fafc;
-            --border-color: #e2e8f0;
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
         }
 
         * {
@@ -21,247 +21,269 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
             padding: 40px 20px;
         }
 
-        .resume-container {
-            max-width: 800px;
+        .portfolio-container {
+            max-width: 900px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
         }
 
-        /* 헤더 섹션 */
+        /* 프로필 헤더 */
         header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 30px;
-            margin-bottom: 30px;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
         }
 
-        .header-title {
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        header h1 {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: -0.05em;
         }
 
-        .header-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
+        header p {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 500;
             margin-bottom: 15px;
         }
 
-        .contact-info {
+        .social-links {
             display: flex;
-            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
-            font-size: 0.95rem;
+        }
+
+        .social-links a {
             color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            background: var(--card-dark);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid #334155;
         }
 
-        .contact-info span {
-            display: flex;
-            align-items: center;
+        .social-links a:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
         }
 
-        /* 공통 섹션 스타일 */
+        /* 섹션 스타일 */
         section {
-            margin-bottom: 35px;
+            background: var(--card-dark);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
 
         h2 {
             font-size: 1.5rem;
-            color: var(--text-dark);
-            border-left: 4px solid var(--primary-color);
-            padding-left: 12px;
+            color: var(--text-main);
             margin-bottom: 20px;
-            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
         }
 
-        p.introduce {
-            font-size: 1.05rem;
+        h2::before {
+            content: "⚡";
+            font-size: 1.2rem;
+        }
+
+        /* 자기소개 글 */
+        .about-text {
             color: var(--text-muted);
+            font-size: 1.05rem;
             white-space: pre-line;
         }
 
-        /* 스킬 태그 */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        /* 테크 스킬 */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
         }
 
-        .skill-tag {
-            background-color: #eff6ff;
-            color: var(--primary-color);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        .skill-card {
+            background: #111827;
+            padding: 12px;
+            text-align: center;
+            border-radius: 10px;
             font-weight: 600;
-            border: 1px solid #dbeafe;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            border: 1px solid #1e293b;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        /* 프로젝트 & 경험 리스트 */
-        .item {
-            margin-bottom: 25px;
+        .skill-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
         }
 
-        .item-header {
+        /* 프로젝트 카드 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #111827;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #1e293b;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.01);
+        }
+
+        .project-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
-        .item-title {
-            font-size: 1.15rem;
+        .project-title {
+            font-size: 1.25rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--accent-color);
         }
 
-        .item-date {
-            font-size: 0.9rem;
+        .project-date {
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        .item-desc {
+        .project-tag {
+            display: inline-block;
+            background: #1e293b;
+            color: var(--text-muted);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 15px;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
             font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 12px;
         }
 
-        ul.item-details {
+        .project-details {
+            list-style-type: square;
             margin-left: 20px;
-            font-size: 0.95rem;
             color: var(--text-muted);
-        }
-
-        ul.item-details li {
-            margin-bottom: 4px;
-        }
-
-        /* 깃허브 배포 안내 배너 */
-        .deploy-banner {
-            margin-top: 50px;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
             font-size: 0.9rem;
         }
 
-        .deploy-banner h3 {
-            margin-bottom: 8px;
-            color: #38bdf8;
-        }
-
-        .deploy-banner ol {
-            margin-left: 20px;
-        }
-        
-        .deploy-banner li {
-            margin-bottom: 4px;
+        .project-details li {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-container">
-        <!-- 헤더 영역 -->
+    <div class="portfolio-container">
         <header>
-            <h1 class="header-title">홍길동</h1>
-            <p class="header-subtitle">AI 기술과 웹을 연결하는 주니어 프론트엔드 개발자</p>
-            <div class="contact-info">
-                <span>📧 이메일: email@example.com</span>
-                <span>📱 연락처: 010-1234-5678</span>
-                <span>🌐 GitHub: github.com/username</span>
+            <div class="avatar">👨‍💻</div>
+            <h1>이윤식</h1>
+            <p>AI를 활용하여 가치를 만드는 주니어 프론트엔드 개발자</p>
+            <div class="social-links">
+                <a href="mailto:your-email@example.com">📧 이메일</a>
+                <a href="https://github.com" target="_blank">🌐 GitHub</a>
+                <a href="#" target="_blank">📝 블로그</a>
             </div>
         </header>
 
-        <!-- 자기소개 -->
         <section>
             <h2>소개 (About Me)</h2>
-            <p class="introduce">
-                "AI와 자연어로 소통하며 가치를 만드는 개발자입니다."
-                6일차 실무 교육을 통해 안드레 카파시가 주창한 '바이브 코딩(Vibe Coding)'의 개념을 깊이 이해하고, AI 에이전트를 적극적으로 활용하여 생산성을 극대화하는 방법을 학습했습니다. 오픈소스 라이선스 규정을 준수하며 협업 플랫폼을 활용할 줄 아는 준비된 인재입니다.
-            </p>
+            <div class="about-text">
+                안녕하세요! AI 기술과 웹 프론트엔드를 결합하여 혁신적인 사용자 경험을 만드는 개발자입니다. 
+                최신 기술 트렌드인 '바이브 코딩(Vibe Coding)' 기법을 마스터하여 AI와의 협업을 극대화하고 고품질의 결과물을 빠르게 뽑아내는 생산성을 갖추고 있습니다.
+            </div>
         </section>
 
-        <!-- 보유 기술 -->
         <section>
-            <h2>보유 기술 (Skills)</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">HTML5 / CSS3</span>
-                <span class="skill-tag">JavaScript (ES6+)</span>
-                <span class="skill-tag">Git / GitHub</span>
-                <span class="skill-tag">Vibe Coding & Cursor</span>
-                <span class="skill-tag">Vercel Deployment</span>
-                <span class="skill-tag">Open Source Utilizing</span>
+            <h2>기술 스택 (Skills)</h2>
+            <div class="skills-container">
+                <div class="skill-card">HTML5</div>
+                <div class="skill-card">CSS3 / Flex</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">Git / GitHub</div>
+                <div class="skill-card">Vibe Coding</div>
+                <div class="skill-card">Vercel</div>
             </div>
         </section>
 
-        <!-- 프로젝트 경험 -->
         <section>
-            <h2>프로젝트 경험 (Projects)</h2>
-            
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">🚀 Vibe Coding 기반 개인 이력서 웹사이트 제작</span>
-                    <span class="item-date">2026.05 (1일)</span>
+            <h2>프로젝트 (Projects)</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">🚀 Vibe Coding 기반 모던 포트폴리오 웹 배포</span>
+                        <span class="project-date">2026.05</span>
+                    </div>
+                    <div>
+                        <span class="project-tag">HTML5</span>
+                        <span class="project-tag">CSS3</span>
+                        <span class="project-tag">Vercel</span>
+                    </div>
+                    <p class="project-desc">AI 에이전트와 자연어로 소통하여 UI 디자인을 고도화하고 Cloud 환경에 무설치로 즉시 배포한 반응형 웹 포트폴리오 프로젝트입니다.</p>
+                    <ul class="project-details">
+                        <li>LLM(대형 언어 모델) 가이드를 통한 다크 모드 테마 감성 UI 설계</li>
+                        <li>Vercel Dashboard를 통한 GitHub 저장소 연동 및 자동 빌드 파이프라인(CI/CD) 구축 완료</li>
+                    </ul>
                 </div>
-                <p class="item-desc">자연어 프롬프트를 통해 코드를 생성하고 Vercel을 통해 클라우드에 실시간 배포한 프로젝트</p>
-                <ul class="item-details">
-                    <li>Cursor AI 및 대형 언어 모델(LLM)을 활용한 UI/UX 컴포넌트 설계 및 구현</li>
-                    <li>GitHub 저장소 연동 및 Vercel Dashboard 기반의 무설치 자동 CI/CD 배포 파이프라인 구축</li>
-                    <li>모바일과 PC에서 모두 최적화되어 보이는 반응형 웹 가독성 개선</li>
-                </ul>
-            </div>
 
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">📚 오픈소스 라이선스 분석 및 활용 프로젝트</span>
-                    <span class="item-date">2026.05 (3일)</span>
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-title">📚 오픈소스 활용 및 검증 실습</span>
+                        <span class="project-date">2026.05</span>
+                    </div>
+                    <div>
+                        <span class="project-tag">Open Source</span>
+                        <span class="project-tag">License Review</span>
+                    </div>
+                    <p class="project-desc">오픈소스 컴포넌트를 올바르게 이해하고 실무 프로젝트에 안전하게 통합시키는 역량을 기른 프로젝트입니다.</p>
+                    <ul class="project-details">
+                        <li>MIT, Apache 2.0 등 주요 허용형(Permissive) 라이선스의 고지 조항 분석</li>
+                        <li>공개 템플릿의 소스코드를 분석하여 요구사항에 맞춤 커스터마이징 실습 수행</li>
+                    </ul>
                 </div>
-                <p class="item-desc">오픈소스 컴포넌트를 안전하고 올바르게 활용하기 위한 라이선스 검증 및 적용 실습</p>
-                <ul class="item-details">
-                    <li>MIT, Apache 2.0, GPL 등 다양한 오픈소스 라이선스의 고지 의무 및 제약 사항 분석</li>
-                    <li>Free CSS 및 오픈소스 템플릿의 코드를 분석하여 프로젝트 요구사항에 맞게 커스텀 적용</li>
-                </ul>
-            </div>
-        </section>
 
-        <!-- 교육 사항 -->
-        <section>
-            <h2>교육 이수 사항 (Education)</h2>
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">인생교수의 AI 연구소 - Git & GitHub 실무교육 프로그램</span>
-                    <span class="item-date">2026.05 이수</span>
-                </div>
-                <ul class="item-details">
-                    <li>오픈 소스의 철학, 역사 및 협업 플랫폼(Hugging Face, Kaggle) 구조 이해</li>
-                    <li>Vibe Coding 기법 및 AI Agent를 활용한 소스코드 효율적 수정 및 리팩토링 기법 습득</li>
-                    <li>GitHub + Vercel 클라우드 자동 연동을 통한 서비스 배포 전과정 마스터</li>
-                </ul>
             </div>
         </section>
-
-        <!-- 배포 팁 배너 -->
-        <div class="deploy-banner">
-            <h3>💡 [안내] 이 코드로 5분 만에 무료 배포하는 방법</h3>
-            <ol>
-                <li>이 창 상단의 코드를 복사해서 컴퓨터에 <strong>index.html</strong> 파일로 저장합니다.</li>
-                <li>본인의 <strong>GitHub</strong>에 새로운 저장소(Repository)를 만들고 이 파일을 업로드합니다.</li>
-                <li><a href="https://vercel.com" target="_blank" style="color: #38bdf8; text-decoration: underline;">Vercel 홈페이지</a>에 접속하여 GitHub 계정으로 로그인합니다.</li>
-                <li>방금 만든 저장소를 <strong>Import</strong>하고, <strong>Deploy</strong> 버튼을 누르면 전 세계에 내 이력서 웹사이트가 공개됩니다!</li>
-            </ol>
-        </div>
     </div>
 
 </body>
